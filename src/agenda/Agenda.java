@@ -4,6 +4,8 @@
  */
 package agenda;
 
+import formularios.CadastroContato;
+
 /**
  *
  * @author Professor
@@ -14,7 +16,7 @@ public class Agenda {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("olá mundo");
+        new CadastroContato().setVisible(true);
     }
     
 }
