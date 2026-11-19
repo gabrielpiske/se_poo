@@ -6,14 +6,25 @@ package DAO;
 
 import entidades.Contato;
 import interfaces.ICRUDcontato;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import utils.ConectaDB;
 
 public class ContatoDao implements ICRUDcontato{
 
     @Override
-    public Contato inserir(Contato ct) {
-        JOptionPane.showMessageDialog(null, ct.getNome());
+    public Contato inserir(Contato ct) {        
+        try {
+            if(ConectaDB.getConexao() != null){ 
+                JOptionPane.showMessageDialog(null, ct.getNome());
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
         return null;
     }
 
