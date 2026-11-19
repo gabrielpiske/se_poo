@@ -7,9 +7,8 @@ package DAO;
 import entidades.Contato;
 import interfaces.ICRUDcontato;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import utils.ConectaDB;
 
@@ -18,14 +17,18 @@ public class ContatoDao implements ICRUDcontato{
     @Override
     public Contato inserir(Contato ct) {        
         try {
-            if(ConectaDB.getConexao() != null){ 
-                JOptionPane.showMessageDialog(null, ct.getNome());
-            }
+            String sql =  "insert into tb_contatos(nome, email, celular)values(?,?,?)";
+            PreparedStatement stm = ConectaDB.getConexao().prepareStatement(sql);
+            stm.setString(1, ct.getNome());
+            stm.setString(2, ct.getEmail());
+            stm.setString(3, ct.getCelular());
+            stm.execute();
+            return ct;
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return null;
+            return null;
+        }        
     }
 
     @Override

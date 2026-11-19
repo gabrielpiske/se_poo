@@ -117,7 +117,8 @@ public class CadastroContato extends javax.swing.JFrame {
         ct.setCelular(jTextFieldCelular.getText());
         
         ContatoDao dao = new ContatoDao();
-        dao.inserir(ct);        
+        dao.inserir(ct);
+        JOptionPane.showMessageDialog(rootPane, "Contato cadastrado com sucesso");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     

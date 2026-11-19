@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class ConectaDB {
     public static Connection getConexao() throws SQLException{
-        String url = "jdbc:postgresql://localhost:5432/db_agend";
+        String url = "jdbc:postgresql://localhost:5432/db_agenda";
         String user = "postgres";
         String password = "postgres";
         return DriverManager.getConnection(url, user, password);
